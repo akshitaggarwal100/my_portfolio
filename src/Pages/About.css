@@ -1,0 +1,119 @@
+.about {
+    height: calc(100vh - 3.5rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutCard {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 200px;
+    padding: 20px;
+    border-radius: 15px;
+    width: 550px;
+}
+
+.aboutCard_dm {
+    background: linear-gradient(135deg, #e53935, #e35d5b);
+}
+
+.aboutCard_lm {
+    background: linear-gradient(135deg, #7F7FD5, #86A8E7);
+}
+
+.photoWrapper {
+    position: relative;
+}
+
+.photo,
+.photoContent {
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.photoContent {
+    background-color: white;
+    color: black;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: 0.3s opacity;
+}
+
+.photo {
+    transition: 0.3s filter;
+}
+
+.photoWrapper:hover .photoContent {
+    opacity: 0.5;
+}
+
+.photoWrapper:hover .photo {
+    filter: blur(1px);
+}
+
+.aboutInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100%;
+    margin-left: 20px;
+    color: white;
+}
+
+.bio h1 {
+    margin-bottom: 10px;
+}
+
+.bio p {
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.aboutIcons {
+    width: 4.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aboutIcon * {
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.aboutIcon:nth-of-type(1) {
+    width: 2rem;
+    height: 2rem;
+}
+
+.aboutIcon:nth-of-type(2) {
+    width: 2.3rem;
+    height: 2.3rem;
+}
+
+@media (max-width: 600px) {
+    .aboutCard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 300px;
+    }
+
+    .aboutInfo {
+        margin-left: 0;
+        height: 270px;
+    }
+}

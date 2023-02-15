@@ -1,0 +1,52 @@
+html {
+    overflow-y: overlay;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #12c2e9, #c471ed, #f64f59);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.lm {
+    background-color: #f0e7db;
+    color: #202023;
+    border-color: #d4cabd;
+}
+
+.dm {
+    background-color: #202023;
+    color: white;
+    border-color: #4b4b57;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    transition: 0.2s background-color, 0.2s color;
+}
