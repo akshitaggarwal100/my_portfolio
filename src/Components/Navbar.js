@@ -96,7 +96,8 @@ export default function Navbar({ active }) {
             </motion.div>
           }
         </AnimatePresence>
-        <a target='_blank' download className={`resume ${dark ? 'resume_dm' : 'resume_lm'}`} onClick={() => new Audio(envelope).play()}>Resume</a>
+
+        <a target='_blank' download='Akshit Aggarwal Resume.pdf' className={`resume ${dark ? 'resume_dm' : 'resume_lm'}`} onClick={() => new Audio(envelope).play()}>Resume</a>
 
         <TiThMenu className={menu ? 'menuButton open' : 'menuButton close'} onClick={handleMenuClick} />
 
@@ -120,7 +121,7 @@ export default function Navbar({ active }) {
               <Link onClick={() => setMenu(false)} className='menuLink' style={{ color: dark ? colors.darkTheme.text : colors.lightTheme.text, backgroundColor: active === 'about' ? (dark ? colors.darkTheme.highlight : colors.lightTheme.highlight) : '' }} to='/'>About Me</Link>
               <Link onClick={() => setMenu(false)} className='menuLink' style={{ color: dark ? colors.darkTheme.text : colors.lightTheme.text, backgroundColor: active === 'projects' ? (dark ? colors.darkTheme.highlight : colors.lightTheme.highlight) : '' }} to='/projects'>Projects</Link>
               <Link onClick={() => setMenu(false)} className='menuLink' style={{ color: dark ? colors.darkTheme.text : colors.lightTheme.text, backgroundColor: active === 'skills' ? (dark ? colors.darkTheme.highlight : colors.lightTheme.highlight) : '' }} to='/skills'>Skills</Link>
-              <a target='_blank' download className='menuLink' onClick={() => new Audio(envelope).play()}>Resume</a>
+              <a target='_blank' className='menuLink' onClick={() => new Audio(envelope).play()}>Resume</a>
             </motion.div>}
           </motion.div>}
         </AnimatePresence>
