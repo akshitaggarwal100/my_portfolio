@@ -39,7 +39,7 @@ export default function About() {
             className='photoWrapper'
           >
             <img className='photo' src="https://media.licdn.com/dms/image/C4D03AQFEbgK0dcG7WA/profile-displayphoto-shrink_800_800/0/1660391592831?e=1680134400&v=beta&t=gsdMhdA8nov9JwrLqkEt-bFrh_7K9I4RGra-Dtqqf-Y" />
-            <div className={`photoContent`}>
+            <div className='photoContent'>
               Yeah! This is me
             </div>
           </motion.div>

@@ -112,6 +112,10 @@
         width: 300px;
     }
 
+    .photoWrapper {
+        height: 260px;
+    }
+
     .aboutInfo {
         margin-left: 0;
         height: 270px;
