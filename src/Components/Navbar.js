@@ -6,17 +6,34 @@ import { storage } from '../Firebase'
 import { useThemeContext } from '../ThemeContext'
 import { FaMoon } from 'react-icons/fa'
 import { ImSun } from 'react-icons/im'
-import { TiThMenu } from 'react-icons/ti'
+import { AiOutlineMenu } from 'react-icons/ai'
 import sound from './switch.wav'
 import envelope from './envelope.mp3'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect } from 'react'
 
 export default function Navbar({ active }) {
   const { dark, switchTheme, colors } = useThemeContext()
   const [menu, setMenu] = useState(false)
+  const [resumeLink, setResumeLink] = useState('')
+
+  async function resumeLinkGenerator() {
+    const resumeRef = ref(storage, 'Akshit Aggarwal Resume.pdf')
+    const url = await getDownloadURL(resumeRef)
+    const response = await fetch(url)
+    const blob = await response.blob()
+    const fileURL = window.URL.createObjectURL(blob)
+    setResumeLink(fileURL)
+  }
+
+  useEffect(() => {
+    resumeLinkGenerator()
+    document.body.addEventListener('click', closeMenu)
+    return () => document.body.removeEventListener('click', closeMenu)
+  }, [])
 
   function closeMenu(e) {
-    if (e.target.className !== 'menuButton') {
+    if (e.target.className === 'menuContainer') {
       setMenu(false)
     }
   }
@@ -30,22 +47,12 @@ export default function Navbar({ active }) {
         document.querySelector('.aboutCard').style.zIndex = 0
       }
     }
-
     setMenu(!menu)
-
-    if (menu) {
-      document.querySelector('#menuContainer').addEventListener('click', closeMenu)
-      console.log('added')
-    }
-
-    else if (menu) {
-      document.querySelector('#menuContainer').removeEventListener('click', closeMenu)
-    }
   }
 
-  const resumeRef = ref(storage, 'Akshit Aggarwal Resume.pdf')
-  getDownloadURL(resumeRef)
-    .then((url) => document.querySelector('.resume').setAttribute('href', url))
+  function downloadResume() {
+    new Audio(envelope).play()
+  }
 
   function changeTheme() {
     new Audio(sound).play()
@@ -57,15 +64,15 @@ export default function Navbar({ active }) {
       <div className='logo'>{'{Aa}'}</div>
 
       <ul className='navLinks'>
-        <Link to='/' style={{color: active === 'about' ? (dark ? colors.darkTheme.highlightText : colors.lightTheme.highlightText) : (dark ? colors.darkTheme.text : colors.lightTheme.text)}} className='navLink'>
+        <Link to='/' style={{ color: active === 'about' ? (dark ? colors.darkTheme.highlightText : colors.lightTheme.highlightText) : (dark ? colors.darkTheme.text : colors.lightTheme.text) }} className='navLink'>
           <li>// About Me</li>
         </Link>
 
-        <Link to='/projects' style={{color: active === 'projects' ? (dark ? colors.darkTheme.highlightText : colors.lightTheme.highlightText) : (dark ? colors.darkTheme.text : colors.lightTheme.text)}} className='navLink'>
+        <Link to='/projects' style={{ color: active === 'projects' ? (dark ? colors.darkTheme.highlightText : colors.lightTheme.highlightText) : (dark ? colors.darkTheme.text : colors.lightTheme.text) }} className='navLink'>
           <li>// Projects</li>
         </Link>
 
-        <Link to='/skills' style={{color: active === 'skills' ? (dark ? colors.darkTheme.highlightText : colors.lightTheme.highlightText) : (dark ? colors.darkTheme.text : colors.lightTheme.text)}} className='navLink'>
+        <Link to='/skills' style={{ color: active === 'skills' ? (dark ? colors.darkTheme.highlightText : colors.lightTheme.highlightText) : (dark ? colors.darkTheme.text : colors.lightTheme.text) }} className='navLink'>
           <li>// Skills</li>
         </Link>
       </ul>
@@ -97,9 +104,9 @@ export default function Navbar({ active }) {
           }
         </AnimatePresence>
 
-        <a target='_blank' download='Akshit Aggarwal Resume.pdf' className={`resume ${dark ? 'resume_dm' : 'resume_lm'}`} onClick={() => new Audio(envelope).play()}>Resume</a>
+        <a onClick={downloadResume} href={resumeLink} download='Akshit Aggarwal Resume.pdf' className={`resume ${dark ? 'resume_dm' : 'resume_lm'}`} >Resume</a>
 
-        <TiThMenu className={menu ? 'menuButton open' : 'menuButton close'} onClick={handleMenuClick} />
+        <AiOutlineMenu className={`menuButton ${menu ? 'open' : 'close'}`} onClick={handleMenuClick} />
 
         <AnimatePresence>
           {menu && <motion.div
@@ -121,7 +128,7 @@ export default function Navbar({ active }) {
               <Link onClick={() => setMenu(false)} className='menuLink' style={{ color: dark ? colors.darkTheme.text : colors.lightTheme.text, backgroundColor: active === 'about' ? (dark ? colors.darkTheme.highlight : colors.lightTheme.highlight) : '' }} to='/'>About Me</Link>
               <Link onClick={() => setMenu(false)} className='menuLink' style={{ color: dark ? colors.darkTheme.text : colors.lightTheme.text, backgroundColor: active === 'projects' ? (dark ? colors.darkTheme.highlight : colors.lightTheme.highlight) : '' }} to='/projects'>Projects</Link>
               <Link onClick={() => setMenu(false)} className='menuLink' style={{ color: dark ? colors.darkTheme.text : colors.lightTheme.text, backgroundColor: active === 'skills' ? (dark ? colors.darkTheme.highlight : colors.lightTheme.highlight) : '' }} to='/skills'>Skills</Link>
-              <a target='_blank' className='menuLink' onClick={() => new Audio(envelope).play()}>Resume</a>
+              <a href={resumeLink} download='Akshit Aggarwal Resume.pdf' className='menuLink' style={{ color: dark ? colors.darkTheme.text : colors.lightTheme.text }} onClick={downloadResume}>Resume</a>
             </motion.div>}
           </motion.div>}
         </AnimatePresence>

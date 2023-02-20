@@ -25,6 +25,7 @@ export default function Project({ projData }) {
     const slides = projData.images.map((img, index) => {
         if (index === 1 || index === 2) {
             return <motion.div
+                key={index}
                 className='catalogueImgPortrait'
             >
                 <img key={index} className='catalogueImgPortrait' src={img} />
@@ -32,6 +33,7 @@ export default function Project({ projData }) {
         }
         else {
             return <motion.div
+                key={index}
                 className='catalogueImg'
             >
                 <img key={index} className='catalogueImg' src={img} />

@@ -3,13 +3,11 @@ import './Projects.css'
 import { Outlet } from 'react-router-dom'
 import { db } from '../Firebase'
 import { getDocs, collection } from 'firebase/firestore'
-import { useThemeContext } from '../ThemeContext'
 import Navbar from '../Components/Navbar'
 import ProjectCard from '../Components/ProjectCard'
 
 export default function Projects() {
   const [projects, setProjects] = useState([])
-  const { dark, switchTheme } = useThemeContext()
 
   useEffect(() => {
     (async () => {
