@@ -89,6 +89,8 @@
 .catalogueImg, .catalogueImgPortrait {
     border-radius: 15px;
     width: 100%;
+    border-width: 2px;
+    border-style: solid;
 }
 
 .catalogueImg {

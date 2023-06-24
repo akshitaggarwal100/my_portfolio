@@ -24,20 +24,34 @@ export default function Project({ projData }) {
 
     const slides = projData.images.map((img, index) => {
         if (index === 1 || index === 2) {
-            return <motion.div
-                key={index}
-                className='catalogueImgPortrait'
-            >
-                <img key={index} className='catalogueImgPortrait' src={img} />
-            </motion.div>
+            return (
+                // <motion.div
+                //     key={index}
+                //     className='catalogueImgPortrait'
+                // >
+                <img
+                    style={ {borderColor: dark ? colors.darkTheme.border : colors.lightTheme.border} }
+                    key={index}
+                    className='catalogueImgPortrait'
+                    src={img}
+                />
+                // </motion.div>
+            )
         }
         else {
-            return <motion.div
-                key={index}
-                className='catalogueImg'
-            >
-                <img key={index} className='catalogueImg' src={img} />
-            </motion.div>
+            return (
+                // <motion.div
+                //     key={index}
+                //     className='catalogueImg'
+                // >
+                <img
+                    style={ {borderColor: dark ? colors.darkTheme.border : colors.lightTheme.border} }
+                    key={index}
+                    className='catalogueImg'
+                    src={img}
+                />
+                // </motion.div>
+            )
         }
     })
 

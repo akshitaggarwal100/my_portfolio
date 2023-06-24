@@ -38,7 +38,7 @@ export default function About() {
             transition={{ type: 'tween' }}
             className='photoWrapper'
           >
-            <img className='photo' src="https://media.licdn.com/dms/image/C4D03AQFEbgK0dcG7WA/profile-displayphoto-shrink_800_800/0/1660391592831?e=1680134400&v=beta&t=gsdMhdA8nov9JwrLqkEt-bFrh_7K9I4RGra-Dtqqf-Y" />
+            <img className='photo' src="https://firebasestorage.googleapis.com/v0/b/akshit-portfolio.appspot.com/o/IMG_20220526_233014_508.jpg?alt=media&token=e5ae4bd3-ddef-4dd7-aaf9-66b1a900d57c" />
             <div className='photoContent'>
               Yeah! This is me
             </div>
